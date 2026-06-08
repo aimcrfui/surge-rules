@@ -1,0 +1,42 @@
+{
+  "categories": {
+    "reject": [
+      {
+        "name": "Sukka Reject Non-IP",
+        "url": "https://ruleset.skk.moe/List/non_ip/reject.conf"
+      }
+    ],
+    "direct": [
+      {
+        "name": "Sukka Domestic Non-IP",
+        "url": "https://ruleset.skk.moe/List/non_ip/domestic.conf"
+      },
+      {
+        "name": "Sukka Apple China",
+        "url": "https://ruleset.skk.moe/List/non_ip/apple_cn.conf"
+      },
+      {
+        "name": "Sukka LAN Non-IP",
+        "url": "https://ruleset.skk.moe/List/non_ip/lan.conf"
+      }
+    ],
+    "ai": [
+      {
+        "name": "Sukka AIGC Domains",
+        "url": "https://ruleset.skk.moe/List/non_ip/ai.conf"
+      }
+    ],
+    "stream": [
+      {
+        "name": "Sukka Streaming Non-IP",
+        "url": "https://ruleset.skk.moe/List/non_ip/stream.conf"
+      }
+    ],
+    "proxy": [
+      {
+        "name": "Sukka General Global Services",
+        "url": "https://ruleset.skk.moe/List/non_ip/global.conf"
+      }
+    ]
+  }
+}

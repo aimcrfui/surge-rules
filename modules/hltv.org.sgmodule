@@ -1,0 +1,36 @@
+#!name=HLTV.org Ads Cleaner
+#!desc=Hide HLTV background, top, betting, and banner ads while keeping news, matches, rankings, and results visible.
+
+[Rule]
+# Ad sellers observed from hltv.org ads.txt and app-ads.txt. Broad content platforms are left untouched.
+DOMAIN-SUFFIX,adform.com,REJECT
+DOMAIN-SUFFIX,amxrtb.com,REJECT
+DOMAIN-SUFFIX,cpmstar.com,REJECT
+DOMAIN-SUFFIX,executemedia.se,REJECT
+DOMAIN-SUFFIX,gravite.net,REJECT
+DOMAIN-SUFFIX,gumgum.com,REJECT
+DOMAIN-SUFFIX,improvedigital.com,REJECT
+DOMAIN-SUFFIX,indexexchange.com,REJECT
+DOMAIN-SUFFIX,lijit.com,REJECT
+DOMAIN-SUFFIX,loopme.com,REJECT
+DOMAIN-SUFFIX,onetag.com,REJECT
+DOMAIN-SUFFIX,openx.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,sharethrough.com,REJECT
+DOMAIN-SUFFIX,smartadserver.com,REJECT
+DOMAIN-SUFFIX,themediagrid.com,REJECT
+DOMAIN-SUFFIX,triplelift.com,REJECT
+DOMAIN-SUFFIX,unrulymedia.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googletagservices.com,REJECT
+URL-REGEX,^https?:\/\/(?:www\.)?hltv\.org\/(?:ads?|advertising|banners?|sponsors?)(?:\/|\?|$),REJECT-TINYGIF
+URL-REGEX,^https?:\/\/(?:www\.)?hltv\.org\/.*(?:yabo|skin-ad|background-ad|bg-sidebar|banner-ad|ad-banner).*,REJECT-TINYGIF
+
+[Script]
+HLTV Ads Cleaner = type=http-response,pattern=^https:\/\/(?:www\.)?hltv\.org(?:\/.*)?$,requires-body=true,max-size=-1,script-path=http://192.168.1.63:5500/modules/scripts/hltv.org.js,debug=true
+
+[MITM]
+hostname = %APPEND% hltv.org, www.hltv.org

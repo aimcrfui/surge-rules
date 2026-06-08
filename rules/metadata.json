@@ -1,0 +1,88 @@
+{
+  "categories": [
+    {
+      "category": "reject",
+      "output": "rules/reject.list",
+      "personal_rule_count": 0,
+      "rule_count": 368,
+      "sources": [
+        {
+          "name": "Sukka Reject Non-IP",
+          "rule_count": 368,
+          "sha256": "46e7b21c158c909d52137243d3f1bf0557fe45fc1abd0ebbad2e2344d1338434",
+          "url": "https://ruleset.skk.moe/List/non_ip/reject.conf"
+        }
+      ]
+    },
+    {
+      "category": "direct",
+      "output": "rules/direct.list",
+      "personal_rule_count": 0,
+      "rule_count": 919,
+      "sources": [
+        {
+          "name": "Sukka Domestic Non-IP",
+          "rule_count": 861,
+          "sha256": "49b98025e335fa59a77cc5d5655c0dfc39012f49f91e7880564c6ad221333f4f",
+          "url": "https://ruleset.skk.moe/List/non_ip/domestic.conf"
+        },
+        {
+          "name": "Sukka Apple China",
+          "rule_count": 9,
+          "sha256": "8896423cf6c8efb2c5b90ce3b3cada9d8e1d21613dd963ff67dcfb54494c6fc0",
+          "url": "https://ruleset.skk.moe/List/non_ip/apple_cn.conf"
+        },
+        {
+          "name": "Sukka LAN Non-IP",
+          "rule_count": 49,
+          "sha256": "77c7c56d79975548babd41a2bc7a8304d3a1cb90639e6dcfba379d39398cf02d",
+          "url": "https://ruleset.skk.moe/List/non_ip/lan.conf"
+        }
+      ]
+    },
+    {
+      "category": "ai",
+      "output": "rules/ai.list",
+      "personal_rule_count": 0,
+      "rule_count": 49,
+      "sources": [
+        {
+          "name": "Sukka AIGC Domains",
+          "rule_count": 49,
+          "sha256": "bf999f27840145d2da82ac5ee933f9dd4a3046ac1922eaa9166b48bdde9f0f0a",
+          "url": "https://ruleset.skk.moe/List/non_ip/ai.conf"
+        }
+      ]
+    },
+    {
+      "category": "stream",
+      "output": "rules/stream.list",
+      "personal_rule_count": 0,
+      "rule_count": 321,
+      "sources": [
+        {
+          "name": "Sukka Streaming Non-IP",
+          "rule_count": 321,
+          "sha256": "f8cee589bc6a7cbcc594f99b90e712be84c949e9ad14adb210ef21efe737acb5",
+          "url": "https://ruleset.skk.moe/List/non_ip/stream.conf"
+        }
+      ]
+    },
+    {
+      "category": "proxy",
+      "output": "rules/proxy.list",
+      "personal_rule_count": 0,
+      "rule_count": 1260,
+      "sources": [
+        {
+          "name": "Sukka General Global Services",
+          "rule_count": 1260,
+          "sha256": "ca9b6416214da8a56ae66244a32540acf4783cf45f34c5aae9948c11384a6244",
+          "url": "https://ruleset.skk.moe/List/non_ip/global.conf"
+        }
+      ]
+    }
+  ],
+  "schema": 1,
+  "source": "sources/providers.json"
+}
