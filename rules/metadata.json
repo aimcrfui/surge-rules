@@ -72,12 +72,12 @@
       "category": "proxy",
       "output": "rules/proxy.list",
       "personal_rule_count": 0,
-      "rule_count": 1260,
+      "rule_count": 1261,
       "sources": [
         {
           "name": "Sukka General Global Services",
-          "rule_count": 1260,
-          "sha256": "ca9b6416214da8a56ae66244a32540acf4783cf45f34c5aae9948c11384a6244",
+          "rule_count": 1261,
+          "sha256": "33c8804bd11769d9c302017196ed326c2da226dcb39c849e95be06a52c3e3a29",
           "url": "https://ruleset.skk.moe/List/non_ip/global.conf"
         }
       ]
