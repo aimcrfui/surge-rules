@@ -25,12 +25,6 @@ Reasons:
 
 ## Local Choice
 
-The initial rule set intentionally stays small:
+This repository keeps only explicit personal overrides under `rules/personal/`. Surge references Sukka's upstream domainset, non-IP, and IP files directly so their category boundaries and ordering remain intact.
 
-- `rules/reject.list`
-- `rules/direct.list`
-- `rules/ai.list`
-- `rules/stream.list`
-- `rules/proxy.list`
-
-For stronger ad blocking, add a separate `DOMAIN-SET` flow instead of merging Sukka's very large `domainset/reject.conf` into `RULE-SET`.
+The full snippet uses Sukka's large reject `DOMAIN-SET`, compact non-IP reject set, service-specific domain rules, and IP fallbacks. It does not merge those sources into broad local categories.

@@ -1,0 +1,2 @@
+# Personal IP ranges to reject.
+# IP rules here are evaluated after all non-IP rules.

@@ -1,0 +1,4 @@
+# Personal IP ranges that must always use DIRECT.
+# no-resolve keeps these rules from resolving domain requests.
+IP-CIDR,100.64.0.0/10,no-resolve
+IP-CIDR,100.100.100.100/32,no-resolve

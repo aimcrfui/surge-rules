@@ -1,0 +1,32 @@
+name: Validate Personal Surge Rules
+
+on:
+  schedule:
+    - cron: "17 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-personal-surge-rules
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Validate personal rules and ordering
+        run: python3 scripts/validate_rules.py
+
+      - name: Check upstream rule health
+        run: python3 scripts/check_upstreams.py

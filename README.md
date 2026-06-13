@@ -1,52 +1,71 @@
-# Surge 个人规则与本地模块服务
+# Personal Surge Rules
 
-这个项目维护两类内容：
+这个仓库维护个人 Surge 覆盖规则、有序的完整 `[Rule]` 模板，以及本地 Surge 模块。
 
-- `rules/*.list`：可发布到 GitHub Raw 的个人 Surge 分流规则。
+- `rules/personal/non_ip/*.list`：个人域名、进程、端口和逻辑规则。
+- `rules/personal/ip/*.list`：个人 IP 规则。
+- `surge-rule-snippet.conf`：按正确顺序组织个人规则和 Sukka 上游规则的完整模板。
 - `modules/*.sgmodule`：需要本地静态服务配合安装的 Surge 模块。
 
-## GitHub 规则引用
+## 设计原则
 
-把下面片段放到主配置 `[Rule]` 中，并且放在大型公开规则前面：
+- 个人明确指定的规则优先于上游规则。
+- 所有非 IP 规则位于会触发 DNS 解析的 IP 规则之前。
+- `stream/global` 位于 `domestic` 之前。
+- Sukka 上游规则由 Surge 直接引用，不在本仓库重新合并。
+- 最后使用 `FINAL,Foreign,dns-failed`。
 
-```ini
-RULE-SET,https://raw.githubusercontent.com/aimcrfui/surge-rules/main/rules/reject.list,REJECT
-RULE-SET,https://raw.githubusercontent.com/aimcrfui/surge-rules/main/rules/direct.list,DIRECT
-RULE-SET,https://raw.githubusercontent.com/aimcrfui/surge-rules/main/rules/ai.list,AIGC
-RULE-SET,https://raw.githubusercontent.com/aimcrfui/surge-rules/main/rules/stream.list,Stream
-RULE-SET,https://raw.githubusercontent.com/aimcrfui/surge-rules/main/rules/proxy.list,Foreign
-```
+完整顺序和原因见 [docs/rule-order.md](docs/rule-order.md)。
 
-完整片段也在 [surge-rule-snippet.conf](/Users/ccoo/Projects/surge/surge-rule-snippet.conf)。
+## 使用
 
-## 自动更新
+将 [surge-rule-snippet.conf](surge-rule-snippet.conf) 中的 `[Rule]` 替换进主配置。模板使用当前个人策略组：
 
-[update-rules.yml](/Users/ccoo/Projects/surge/.github/workflows/update-rules.yml) 每 24 小时运行一次，也可以在 GitHub Actions 手动触发。它会执行：
+- `in`
+- `Home`
+- `Foreign`
+- `AIGC`
+- `Stream`
+- `Telegram`
 
-```bash
-python3 scripts/update_rules.py
-```
+如果策略组改名，必须同步修改模板。
 
-生成器会读取 [sources/providers.json](/Users/ccoo/Projects/surge/sources/providers.json)，拉取上游规则，再输出到 `rules/`。如果生成结果没有变化，workflow 不会提交空更新。
+## 添加个人规则
 
-## 个人 override
+根据目标策略编辑对应文件：
 
-不要直接编辑 `rules/*.list`。把自己的规则写到 `personal/*.list`，再运行生成器。
+- 永远直连：`rules/personal/non_ip/direct.list`
+- 国内网络感知策略：`rules/personal/non_ip/in.list`
+- 海外默认策略：`rules/personal/non_ip/foreign.list`
+- AIGC、流媒体、Telegram：对应同名文件
+- IP 规则：放入 `rules/personal/ip/` 的对应文件
+
+外部规则集中的每一行不能包含策略名。个人 IP 规则只想匹配已经是 IP 地址的连接时，应添加 `no-resolve`。
 
 示例：
 
 ```ini
-# personal/direct.list
+# rules/personal/non_ip/in.list
 DOMAIN-SUFFIX,example.cn
 
-# personal/proxy.list
+# rules/personal/non_ip/foreign.list
 DOMAIN-SUFFIX,example.com
 
-# personal/reject.list
+# rules/personal/ip/direct.list
+IP-CIDR,100.64.0.0/10,no-resolve
+
+# rules/personal/non_ip/reject.list
 DOMAIN-SUFFIX,analytics.example.com
 ```
 
-注意：GitHub Raw 规则仓库如果是公开仓库，个人域名也会公开。敏感域名建议继续保留在本地 profile，不要放到 `personal/*.list` 后推送。
+提交前运行：
+
+```bash
+python3 scripts/validate_rules.py
+python3 scripts/check_upstreams.py
+```
+
+GitHub Actions 每 24 小时执行相同检查。Sukka 网站分类规则由 Surge 直接读取上游 URL，因此无需在本仓库复制更新。敏感域名不要提交到公开仓库。
 
 ## 本地模块服务
 
@@ -65,4 +84,4 @@ python3 -m http.server 5500 --bind 0.0.0.0
 http://192.168.1.63:5500/modules/example.com.sgmodule
 ```
 
-如果改用其他端口，例如 `8000`，需要同步修改 [PROMPT.md](/Users/ccoo/Projects/surge/PROMPT.md) 里的 `【本地模块服务地址】`。
+如果改用其他端口，例如 `8000`，需要同步修改 [PROMPT.md](PROMPT.md) 里的 `【本地模块服务地址】`。

@@ -1,9 +1,9 @@
 # License Notes
 
-This repository contains personal configuration files and generated rule lists.
+This repository contains personal configuration files and references to upstream rule lists.
 
-- Generated files under `rules/` are derived from the upstream providers listed in [sources/providers.json](sources/providers.json).
+- Personal files under `rules/personal/` are maintained in this repository.
+- Upstream files referenced by [surge-rule-snippet.conf](surge-rule-snippet.conf) are not copied into this repository.
 - The current upstream provider is [SukkaW/Surge](https://github.com/SukkaW/Surge), licensed under AGPL-3.0.
-- If more providers are added later, their licenses must be checked before publishing generated output.
 
-Local glue code in `scripts/` is provided for personal use with the same license obligations as the generated rules it publishes.
+Local validation code in `scripts/` is provided for personal use.

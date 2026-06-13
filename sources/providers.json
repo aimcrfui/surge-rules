@@ -1,42 +1,136 @@
 {
-  "categories": {
-    "reject": [
-      {
-        "name": "Sukka Reject Non-IP",
-        "url": "https://ruleset.skk.moe/List/non_ip/reject.conf"
-      }
-    ],
-    "direct": [
-      {
-        "name": "Sukka Domestic Non-IP",
-        "url": "https://ruleset.skk.moe/List/non_ip/domestic.conf"
-      },
-      {
-        "name": "Sukka Apple China",
-        "url": "https://ruleset.skk.moe/List/non_ip/apple_cn.conf"
-      },
-      {
-        "name": "Sukka LAN Non-IP",
-        "url": "https://ruleset.skk.moe/List/non_ip/lan.conf"
-      }
-    ],
-    "ai": [
-      {
-        "name": "Sukka AIGC Domains",
-        "url": "https://ruleset.skk.moe/List/non_ip/ai.conf"
-      }
-    ],
-    "stream": [
-      {
-        "name": "Sukka Streaming Non-IP",
-        "url": "https://ruleset.skk.moe/List/non_ip/stream.conf"
-      }
-    ],
-    "proxy": [
-      {
-        "name": "Sukka General Global Services",
-        "url": "https://ruleset.skk.moe/List/non_ip/global.conf"
-      }
-    ]
-  }
+  "providers": [
+    {
+      "kind": "domainset",
+      "min_rules": 100000,
+      "name": "Sukka Reject Domain Set",
+      "url": "https://ruleset.skk.moe/List/domainset/reject.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 300,
+      "name": "Sukka Reject Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/reject.conf"
+    },
+    {
+      "kind": "domainset",
+      "min_rules": 3000,
+      "name": "Sukka CDN Domain Set",
+      "url": "https://ruleset.skk.moe/List/domainset/cdn.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 70,
+      "name": "Sukka CDN Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/cdn.conf"
+    },
+    {
+      "kind": "domainset",
+      "min_rules": 2000,
+      "name": "Sukka Speedtest Domain Set",
+      "url": "https://ruleset.skk.moe/List/domainset/speedtest.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 10,
+      "name": "Sukka Telegram Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/telegram.conf"
+    },
+    {
+      "kind": "domainset",
+      "min_rules": 100,
+      "name": "Sukka Apple CDN Domain Set",
+      "url": "https://ruleset.skk.moe/List/domainset/apple_cdn.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 40,
+      "name": "Sukka Microsoft CDN Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 5,
+      "name": "Sukka Apple China Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/apple_cn.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 20,
+      "name": "Sukka Apple Services Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/apple_services.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 70,
+      "name": "Sukka Microsoft Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/microsoft.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 10,
+      "name": "Sukka AIGC Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/ai.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 300,
+      "name": "Sukka Stream Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/stream.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 1000,
+      "name": "Sukka Global Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/global.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 800,
+      "name": "Sukka Domestic Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/domestic.conf"
+    },
+    {
+      "kind": "non_ip",
+      "min_rules": 40,
+      "name": "Sukka LAN Non-IP",
+      "url": "https://ruleset.skk.moe/List/non_ip/lan.conf"
+    },
+    {
+      "kind": "ip",
+      "min_rules": 500,
+      "name": "Sukka Reject IP",
+      "url": "https://ruleset.skk.moe/List/ip/reject.conf"
+    },
+    {
+      "kind": "ip",
+      "min_rules": 10,
+      "name": "Sukka Telegram IP",
+      "url": "https://ruleset.skk.moe/List/ip/telegram.conf"
+    },
+    {
+      "kind": "ip",
+      "min_rules": 10,
+      "name": "Sukka Stream IP",
+      "url": "https://ruleset.skk.moe/List/ip/stream.conf"
+    },
+    {
+      "kind": "ip",
+      "min_rules": 5,
+      "name": "Sukka LAN IP",
+      "url": "https://ruleset.skk.moe/List/ip/lan.conf"
+    },
+    {
+      "kind": "ip",
+      "min_rules": 1,
+      "name": "Sukka Domestic IP",
+      "url": "https://ruleset.skk.moe/List/ip/domestic.conf"
+    },
+    {
+      "kind": "ip",
+      "min_rules": 3000,
+      "name": "Sukka China IP",
+      "url": "https://ruleset.skk.moe/List/ip/china_ip.conf"
+    }
+  ]
 }

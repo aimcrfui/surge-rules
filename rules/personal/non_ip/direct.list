@@ -1,0 +1,9 @@
+# Personal rules that must always use DIRECT.
+PROCESS-NAME,Tailscale
+DOMAIN-SUFFIX,tailscale.com
+DOMAIN-SUFFIX,tailscale.io
+DOMAIN-SUFFIX,ts.net
+AND,((PROTOCOL,UDP),(DEST-PORT,3478))
+PROCESS-NAME,RustDesk
+DEST-PORT,21116
+DEST-PORT,123
